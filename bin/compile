@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+BUILD_DIR=$1
+
+DOWNLOAD_URL="https://github.com/motor-admin/motor-admin/releases/download/latest/motor-admin-Linux-x86_64"
+
+echo "-----> Downloading Motor Admin"
+
+mkdir -p $BUILD_DIR/.heroku
+curl -s --retry 4 -o $BUILD_DIR/.heroku/motor-admin -L $DOWNLOAD_URL
+chmod +x $BUILD_DIR/.heroku/motor-admin
+
+echo "-----> Adding Motor Admin to PATH"
+PROFILE_FILE="$BUILD_DIR/.profile.d/motor-admin.sh"
+mkdir -p $(dirname $PROFILE_FILE)
+echo 'export PATH="/app/.heroku:$PATH"' > $PROFILE_FILE
+
+echo "-----> Motor Admin has been downloaded"

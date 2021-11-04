@@ -4,7 +4,7 @@ set -e
 
 BUILD_DIR=$1
 
-MOTOR_ADMIN_PRO_BINARY_URL=`cat .pro 2>/dev/null`
+[ -f $BUILD_DIR/.pro ] && export MOTOR_ADMIN_PRO_BINARY_URL=`cat $BUILD_DIR/.pro`
 
 DOWNLOAD_URL="${MOTOR_ADMIN_PRO_BINARY_URL:-https://github.com/motor-admin/motor-admin/releases/download/latest/motor-admin-Linux-x86_64}"
 

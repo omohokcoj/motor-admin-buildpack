@@ -4,7 +4,7 @@ set -e
 
 BUILD_DIR=$1
 
-DOWNLOAD_URL="https://github.com/motor-admin/motor-admin/releases/download/latest/motor-admin-Linux-x86_64"
+DOWNLOAD_URL="${MOTOR_ADMIN_PRO_BINARY_URL:-https://github.com/motor-admin/motor-admin/releases/download/latest/motor-admin-Linux-x86_64}"
 
 echo "-----> Downloading Motor Admin"
 
